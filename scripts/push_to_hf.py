@@ -1,3 +1,4 @@
+
 import os
 from huggingface_hub import HfApi
 
@@ -12,7 +13,7 @@ files_to_upload = [
 ]
 
 for file_path in files_to_upload:
-    filename = os.path.basename(file_path)
+    filename = file_path.split("/")[-1]
     api.upload_file(path_or_fileobj=file_path, path_in_repo=filename, repo_id=REPO_ID, repo_type="model")
     print(f"Uploaded {filename} to Hugging Face Hub.")
 

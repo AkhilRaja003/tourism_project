@@ -1,3 +1,4 @@
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os, json
@@ -8,12 +9,10 @@ TEST_PATH = "data/test.csv"
 CAT_COLS_PATH = "model/cat_cols.json"
 
 df = pd.read_csv(RAW_DATA_PATH)
-if "Unnamed: 0" in df.columns: 
-    df = df.drop(columns=["Unnamed: 0"])
+if "Unnamed: 0" in df.columns: df = df.drop(columns=["Unnamed: 0"])
 
 cat_cols = df.select_dtypes(include=["object"]).columns.tolist()
-with open(CAT_COLS_PATH, "w") as f: 
-    json.dump(cat_cols, f)
+with open(CAT_COLS_PATH, "w") as f: json.dump(cat_cols, f)
 
 target = "ProdTaken"
 X = df.drop(columns=[target])

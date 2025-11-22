@@ -1,3 +1,4 @@
+
 import pandas as pd
 import joblib
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -21,8 +22,7 @@ y_train = train_df[target]
 X_test = test_df.drop(columns=[target])
 y_test = test_df[target]
 
-with open(CAT_COLS_PATH, "r") as f: 
-    cat_cols = json.load(f)
+with open(CAT_COLS_PATH, "r") as f: cat_cols = json.load(f)
 num_cols = [c for c in X_train.columns if c not in cat_cols]
 
 preprocessor = ColumnTransformer([
